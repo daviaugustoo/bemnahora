@@ -1,0 +1,38 @@
+# Imagem base para runtime (leve)
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
+WORKDIR /app
+EXPOSE 80
+ENV ASPNETCORE_URLS=http://+:80
+ENV ASPNETCORE_ENVIRONMENT=Production
+
+# Imagem para build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /src
+COPY . .
+RUN dotnet publish -c Release -o /app/publish
+
+# Final
+FROM base AS final
+WORKDIR /app
+COPY --from=build /app/publish .
+
+# Variáveis que serão preenchidas no deploy
+# JWT
+ENV Jwt__Key=""
+ENV Jwt__Issuer=""
+ENV Jwt__Audience=""
+
+# MONGO
+ENV MongoDB__ConnectionString=""
+ENV MongoDB__DatabaseName=""
+
+# OpenStreetMap
+ENV OpenStreetMap__UserAgent="BemNaHora/1.0 (https://bemnahora.onrender.com)"
+
+# MERCADO PAGO
+ENV MercadoPago__AccessToken=""
+
+# Azure painel controller
+ENV AzureSignalR__ConnectionString=""
+
+ENTRYPOINT ["dotnet", "backend.dll"]

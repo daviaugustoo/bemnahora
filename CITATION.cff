@@ -1,0 +1,30 @@
+cff-version: 1.0.1
+message: Please cite this software using these metadata.
+title: Bem Na Hora
+authors:
+  - family-names: Soares
+    given-names: Davi Augusto Dias
+  - family-names: Falcone
+    given-names: Lucas Giovine Madureira
+  - family-names: Silva
+    given-names: Luisa Clara de Paula Lara
+  - family-names: Marques
+    given-names: Pedro Henrique Morais
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Mol
+    given-names: Artur Martins
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Cardoso
+    given-names: Leonardo Vilela
+keywords:
+  - delivery
+  - bebidas
+  - carnes
+  - logística
+  - aplicativo móvel
+repository-code: https://github.com/ICEI-PUC-Minas-PMGES-TI/pmg-es-2025-2-ti5-6904100-bemnahora.git
+license: CC-BY-4.0
+version: 0.1.1
+date-released: 2025-12-22

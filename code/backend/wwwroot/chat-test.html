@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Teste de Chat - SignalR</title>
+</head>
+
+<body>
+    <h2>Teste do Chat (SignalR)</h2>
+
+    <div>
+        <input id="pedidoId" placeholder="Pedido ID" value="pedido123">
+        <input id="remetenteId" placeholder="Usuário ID" value="user-abc">
+        <input id="remetenteTipo" placeholder="Tipo" value="Entregador">
+        <input id="texto" placeholder="Digite uma mensagem">
+    </div>
+
+    <button id="connect">Conectar</button>
+    <button id="join">Entrar na Sala do Pedido</button>
+    <button id="send">Enviar Mensagem</button>
+
+    <h3>Mensagens:</h3>
+    <pre id="log"></pre>
+
+    <!-- Biblioteca JS oficial do SignalR -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+
+    <script>
+        let connection;
+
+        const log = (msg) => {
+            document.getElementById('log').textContent += msg + "\n";
+        };
+
+        document.getElementById('connect').onclick = async () => {
+            connection = new signalR.HubConnectionBuilder()
+                .withUrl("/hubs/chat")   // URL do seu ChatHub
+                .withAutomaticReconnect()
+                .build();
+
+            connection.on("ReceiveMessage", (msg) => {
+                log(`[${msg.pedidoId}] ${msg.remetenteTipo} (${msg.remetenteId}): ${msg.texto}`);
+            });
+
+            await connection.start();
+            log("Conectado ao servidor.");
+        };
+
+        document.getElementById('join').onclick = async () => {
+            const pedidoId = document.getElementById('pedidoId').value;
+            await connection.invoke("JoinPedido", pedidoId);
+            log("Entrou na sala: " + pedidoId);
+        };
+
+        document.getElementById('send').onclick = async () => {
+            const pedidoId = document.getElementById('pedidoId').value;
+            const remetenteId = document.getElementById('remetenteId').value;
+            const tipo = document.getElementById('remetenteTipo').value;
+            const texto = document.getElementById('texto').value;
+
+            await connection.invoke("SendMessage", pedidoId, remetenteId, tipo, texto);
+        };
+    </script>
+</body>
+</html>

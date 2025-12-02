@@ -1,0 +1,43 @@
+@startwbs
+* Bem na Hora
+** 1. Iniciação
+*** Definição do problema
+*** Identificação dos stakeholders
+*** Definição dos objetivos
+*** Aprovação do termo de abertura
+** 2. Planejamento
+*** Levantamento de requisitos
+**** Requisitos funcionais e não funcionais
+**** Restrições arquiteturais
+*** Modelagem do produto
+**** Visão do produto e personas
+**** Modelagem de negócio
+**** Diagramas UML
+*** Planejamento das sprints
+**** Entregas e cronograma
+*** Planejamento de testes e métricas
+** 3. Execução / Desenvolvimento
+*** Backend (.NET)
+**** API RESTful
+**** Integração MongoDB
+**** Autenticação JWT
+**** Integração Mercado Pago
+**** Acompanhamento da entrega
+*** Frontend (Flutter)
+**** Telas e navegação
+**** Integração com backend
+*** Banco de Dados
+*** Infraestrutura e Deploy
+**** Repositório GitHub
+**** Configuração de ambiente
+**** Deploy backend e app mobile
+** 4. Testes e Avaliação
+*** Testes unitários e de integração
+*** Testes de desempenho e segurança
+*** Ajustes pós-teste
+** 5. Entrega e Encerramento
+*** Demonstração do sistema
+*** Documentação final
+*** Entrega do sistema
+*** Avaliação final e encerramento
+@endwbs
