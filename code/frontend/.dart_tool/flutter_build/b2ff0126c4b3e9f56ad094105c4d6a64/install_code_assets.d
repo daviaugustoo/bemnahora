@@ -1,0 +1,1 @@
+ /home/davisoares/code/ti5/code/frontend/.dart_tool/flutter_build/b2ff0126c4b3e9f56ad094105c4d6a64/native_assets.json: 
